@@ -89,7 +89,7 @@ ReactDOM.render(
 
 <img src="imgs/node-info.png" width="1000" alt="节点信息"/>
 
-根据这个关键信息，然后回到之前创建的 `eslint` 插件项目的 `remove-log.js` 文件上，可以这样写来识别该语法并处理：
+根据这个关键信息，然后回到之前创建的 `eslint` 插件项目的 `remove-log.js` 文件上，可以这样写来识别改语法并处理：
 
 ```js
 module.exports = {
