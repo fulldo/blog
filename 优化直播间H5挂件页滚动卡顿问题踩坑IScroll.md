@@ -182,12 +182,12 @@ document.addEventListener(
 
 ## 优化前
 
-滑动直播间为 `Webview`，能感觉出很明显的卡顿：
+滑动直播间为 `Webview`，能感觉出很明显的卡顿，无法滑动：
 
-<video src="imgs/wv-scroll/msg-before.mp4" controls="controls" width="375"></video>
+<img src="imgs/wv-scroll/msg-before.gif" width="375" alt="优化前" />
 
 ## 优化后
 
 滑动很顺畅，不会出现卡顿：
 
-<video src="imgs/wv-scroll/msg-after.mp4" controls="controls" width="375"></video>
+<img src="imgs/wv-scroll/msg-after.gif" width="375" alt="优化后" />
