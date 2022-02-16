@@ -371,7 +371,7 @@ console.log(result.outputText);
 // var x = 'string';
 ```
 
-## LanguageService Api
+## LanguageService API
 
 LanguageService 是 TypeScript 的一个高级功能，为编译器（如 vscode）封装的一层接口，适用于编辑器一类的应用，包括：
 
