@@ -96,8 +96,8 @@ const sourceFile = ts.createSourceFile(
 
 // forEachChild
 function visitNode1(node) {
-  ts.forEachChild((child) => {
-    visitNode(child);
+  node.forEachChild((child) => {
+    visitNode1(child);
   });
 }
 
@@ -186,6 +186,10 @@ ReactDOM.render(
  */
 ```
 
+### 更多操作 API
+
+[TypeScript Transformer Handbook](https://github.com/madou/typescript-transformer-handbook)
+
 ## 节点类型判断
 
 TypeScript 提供一系列的 API 用于判断节点的类型，是 import 语法、export 语法、函数声明还是其他，下面是一些 API ：
@@ -207,7 +211,10 @@ ts.isPropertyAccessExpression
 ts.isJsxAttributes
 ...
 
+
 ```
+
+关于节点类型可以看[这里](https://github.com/meriyah/meriyah/issues/35)
 
 ## 读取 tsconfig.json
 
