@@ -1,6 +1,6 @@
 # 解析函数调用栈为例讲解 TypeScript 静态分析（二）
 
-上篇讲解了一些 TypeScript 操作的 API，本文介绍通过这些 API 如何静态分析代码的函数调用栈。
+上篇讲解了一些 TypeScript 操作的 API，本文介绍通过这些 API 如何静态分析代码的函数调用栈，本文[代码实例](https://github.com/fulldo/call-chain-static-analysis/blob/main/extract.js)。
 
 假设我们有如下代码：
 
