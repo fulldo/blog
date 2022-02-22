@@ -171,6 +171,7 @@ rootNodes.forEach((node) => {
 
 - 函数调用在函数声明前，就不好处理
 - 函数别名处理起来比较麻烦
+- 需要分析整个 AST 的函数声明调用关系后，才能提取某个函数调用栈，非常耗时
 - import 进来的函数没处理，处理起来比较麻烦，要解析各种 import / export 语法
 
 下一篇文章讲解利用 TypeScript Service API 解析，以方便的办法解决上面问题。
