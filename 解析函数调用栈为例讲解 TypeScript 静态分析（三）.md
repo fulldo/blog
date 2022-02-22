@@ -7,7 +7,7 @@
 - 需要分析整个 AST 的函数声明调用关系后，才能提取某个函数调用栈，非常耗时
 - import 进来的函数没处理，处理起来比较麻烦，要解析各种 import / export 语法
 
-这篇文章讲解利用 TypeScript Language Service API 解析某个函数的调用栈，并能容易地解决上述问题。本地代码[完整示例]()。
+这篇文章讲解利用 TypeScript Language Service API 解析某个函数的调用栈，并能容易地解决上述问题。本地代码[完整示例](https://github.com/fulldo/call-chain-static-analysis/blob/main/extract2.js)。
 
 假设我们有如下代码例子：
 
