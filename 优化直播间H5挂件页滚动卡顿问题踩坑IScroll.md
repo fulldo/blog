@@ -121,7 +121,7 @@ this.y = y;
 
 ### 为什么在 Chrome55+会失效，是什么原因？
 
-`Chrome55+` 支持了 `pointer event`，而 `iscroll` 内部如果判断 `window.PointEvent` 存在，就会优先使用 `pointer event`，在手势移动时触发 `pointermove` 事件，如果会一直能连续触发 `pointermove` 事件，那是没问题，但根据https://developer.mozilla.org/en-US/docs/Web/CSS/touch-actiond 的描述，当开始处理 `touch` 事件时，会触发 `pointercancel` 事件（An application using Pointer_events will receive a pointercancel event when the browser starts handling a touch gesture），这样就会打断 `pointermove` 事件（https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/pointermove_event）,导致 `iscroll` 不能正常使用。
+`Chrome55+` 支持了 `pointer event`，而 `iscroll` 内部如果判断 `window.PointEvent` 存在，就会优先使用 `pointer event`，在手势移动时触发 `pointermove` 事件，如果会一直能连续触发 `pointermove` 事件，那是没问题，但根据https://developer.mozilla.org/en-US/docs/Web/CSS/touch-actiond 的描述，当开始处理 `touch` 事件时，会触发 `pointercancel` 事件（An application using Pointer_events will receive a pointercancel event when the browser starts handling a touch gesture），这样就会打断 `pointermove` 事件 (https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/pointermove_event)，导致 `iscroll` 不能正常使用。
 
 ### 如何解决 Chrome55+会失效问题？
 
