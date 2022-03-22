@@ -24,4 +24,4 @@
 
 ## 其他
 
-### [Promise/A+的实现思维导图](https://github.com/fulldo/blog/blob/main/PromiseA+的实现思维导图/readme.md)
+### [Promise/A+的实现思维导图](https://github.com/fulldo/blog/blob/main/articles/PromiseA%2B的实现思维导图/readme.md)
