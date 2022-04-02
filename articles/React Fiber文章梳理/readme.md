@@ -6,6 +6,8 @@
 
 [https://juejin.cn/post/6844903975112671239](https://juejin.cn/post/6844903975112671239)
 
-## 实现思维导图
+## 思维导图
+
+[文字版](./text.md)
 
 <img src="imgs/fiber.png" width="1000" alt="Promise"/>
