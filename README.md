@@ -30,6 +30,8 @@
 
 ### [React Fiber 的一篇文章梳理](https://github.com/fulldo/blog/tree/main/articles/React%20Fiber%E6%96%87%E7%AB%A0%E6%A2%B3%E7%90%86)
 
+### [为什么 React Scheduler 使用 MessageChannel（总结）](https://github.com/fulldo/blog/tree/main/articles/%E4%B8%BA%E4%BB%80%E4%B9%88%20React%20Scheduler%20%E4%BD%BF%E7%94%A8%20MessageChannel%EF%BC%88%E6%80%BB%E7%BB%93%EF%BC%89)
+
 ## 其他
 
 ### [Promise/A+的实现思维导图](https://github.com/fulldo/blog/blob/main/articles/PromiseA%2B的实现思维导图/readme.md)
