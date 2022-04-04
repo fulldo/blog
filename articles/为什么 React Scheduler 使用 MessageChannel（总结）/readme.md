@@ -6,7 +6,7 @@ React 的调度原理跟 requestIdleCallback 很像，利用浏览器的空闲�
 
 一个是兼容性很差，可以看[这里](https://caniuse.com/?search=requestIdleCallback)。
 
-另一个是，requestIdleCallback 一秒才[调用 20 次](https://github.com/facebook/react/issues/13206#issuecomment-418923831)，而我们肉眼的流畅度是一秒 60 帧，相差太大了。
+另一个是，requestIdleCallback 一秒才调用 20 次，而我们肉眼的流畅度是一秒 60 帧，相差太大了。参考[这里](https://github.com/facebook/react/issues/13206#issuecomment-418923831)和[这里](https://w3c.github.io/requestidlecallback/#bib-responsetime)
 
 ## 文章总结 1
 
