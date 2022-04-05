@@ -2,9 +2,11 @@
 
 之前参与过视频监控和直播相关的开发，试过搭建简单的直播推拉流环境，这里做一下分享。
 
-一个视频直播流程大概如下：
+一个视频直播流程大概如下（[图片来源](https://juejin.cn/post/6844904179836813325)）：
 
-<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/6/3/172796e846dd5b80~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp" width="500" />
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/6/3/172796e846dd5b80~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp" width="800" />
+
+
 
 1. 视频采集推流，数据源可以是手机拍摄、摄像头拍摄、视频文件，然后利用 `obs、FFmpeg` 工具推流。
 2. 流媒体服务器，接收采集端视频推流和播放端拉流。
@@ -120,11 +122,12 @@ ffplay http://localhost:8000/live/STREAM_NAME.flv
 ```
 
 或者使用在线视频直播测试，如[这个](http://ossrs.net/players/srs_player.html)，成功后显示如下：
+
 <img src="./imgs/play.jpg" width="600" />
 
 经过上面的操作，一个简单的本地直播推拉流环境搭建就完成了。
 
-后面分享一些关于本地 `H265` 的测试。
+后面分享一些关于本地 `H265` 视频编码推流的测试。
 
 ### H265 本地推流测试
 
@@ -148,9 +151,10 @@ enum {
 };
 ```
 
-然后对其源码进行了改动，完成了 `H265` 的支持，可以到[金山云的 Github](https://github.com/ksvc/FFmpeg) 下载安装，或者也可以试试这个。
+然后对其源码进行了改动，完成了 `H265` 的支持，可以到[金山云的 Github](https://github.com/ksvc/FFmpeg) 下载安装，或者也可以试试[这个](https://github.com/numberwolf/FFmpeg-QuQi-H265-FLV-RTMP
+)。
 
-如果是 `MAC / Linux` 电脑，可以参考[这篇文章](https://www.pengrl.com/p/20044/) 或者 [How-to-compile-cn 这篇文章](https://github.com/runner365/srt_encoder/wiki/How-to-compile-cn) 安装。
+如果是 `MAC / Linux` 电脑，可以参考 [这篇文章](https://www.pengrl.com/p/20044/) 或者 [How-to-compile-cn 这篇文章](https://github.com/runner365/srt_encoder/wiki/How-to-compile-cn) 安装。
 
 安装过程中会遇到很多坑，下面这些我遇到的：
 
