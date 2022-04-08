@@ -712,6 +712,8 @@ describe('use pagination', () => {
 
 在线`demo`：[https://fulldo.github.io/pages/use-load-more-list/](https://fulldo.github.io/pages/use-load-more-list/)
 
+<img src="https://fulldo.github.io/pages/use-load-more-list/images/demo.gif" width="360" />
+
 ## 总结
 
 至此，我们完成了这个无限加载更多数据的 hook 的实现，这里再总结下。
