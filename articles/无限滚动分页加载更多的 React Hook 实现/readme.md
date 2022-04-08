@@ -453,11 +453,20 @@ const baseQuery = async ({ pageNumber }: { pageNumber: number }, isReset: boolea
       lockingRef.current = false
     })
 }
+
+useEffect(() => {
+  // 获取数据
+  if (configRef.current.autoRun) {
+    baseQuery({ pageNumber: state.pageNumber })
+  }
+}, [])
 ```
 
 #### 获取下一页数据和删除某数据项
 
-这部分就比较复杂了，因为有删除数据的情况存在，为了方便用户处理删除的情况，可以把删除逻辑都放在 hook 里面实现。
+获取下一页数据和删除某数据项的处理可以说是这个 hook 相比同类产品有特色的一点，他把这部分的处理封装在 hook 内部，不需要使用者过多处理数据变化导致数据列表与预期不一致的影响，数据变化的使用更方便。
+
+因为有删除数据的情况存在，这部分也比较复杂，我们看以下的例子。
 
 假设我们数据库有这些数据，共有 10 个数据，如果每页 5 个，可以分成 2 页： 
 |               |       |       |       |       |
@@ -537,6 +546,197 @@ const deleteDataById = (id: number | string, deleteCountOfAutoUpdate = 0) => {
     - 递减 willBackwardsPageCount
     - 因当前页已刷新，重置 deleteCountRef 为 0
 
+以上是 getNextPage 的逻辑，下面看下代码实现：
+```typescript
+const getNextPage = async () => {
+  let pageNumber = state.pageNumber
+  let deleteCount = deleteCountRef.current
+  try {
+    // 没有删除过数据，直接获取下一页
+    if (!deleteCount) {
+      await baseQuery({ pageNumber: state.pageNumber + 1 })
+      return Promise.resolve()
+    }
+    // 如果 删除的数量跟pageSize取余的结果，比pageSize还小，就获取两次数据
+    let remainder = deleteCount % pageSize
+    // 计算 fetchCount
+    let halfOfPageSize = pageSize / 2
+    let fetchCount = remainder ? (remainder < halfOfPageSize ? 2 : 1) : 1
+    // 删除数量少于pageSize，不需要回退
+    let willBackwardsPageCount = deleteCount > pageSize ? Math.floor(deleteCount / pageSize) : 0
+    while (fetchCount--) {
+      // 后退之后，将要获取的页码
+      const willFetchPageNumber = pageNumber - willBackwardsPageCount
+      await baseQuery({ pageNumber: willFetchPageNumber })
+      willBackwardsPageCount--
+      deleteCountRef.current = 0
+    }
+    return Promise.resolve()
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+```
 
+#### 返回数据
 
+最后我们返回数据即可：
 
+```typescript
+return {
+  ...state,
+  hasMore,
+  reset,
+  getNextPage,
+  deleteDataById
+}
+```
+
+经过上面的折腾，完成了这个 hook 逻辑层的实现。
+
+### 单元测试
+
+单元测试基于 react-hooks-testing-library 实现，它可以帮助我们更方便的做测试。
+
+#### 模拟数据库
+```typescript
+const createDatabase = () => {
+  return (function () {
+    // 模拟 85 条数据
+    let data = Array(85)
+      .fill({})
+      .map((_el, index) => ({ id: index }))
+    return {
+      // 模拟分页取数据
+      getData({ pageNumber, pageSize }: { pageNumber: number; pageSize: number }) {
+        return {
+          data: data.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+          total: data.length
+        }
+      },
+      // 模拟删除某项数据
+      deleteById(formId: number) {
+        data = data.filter(({ id }) => id !== formId)
+      }
+    }
+  })()
+}
+```
+#### 模拟后端接口操作 model
+```typescript
+const createModel = function () {
+  // 创建数据库操作
+  const database = createDatabase()
+  // 获取数据
+  const fetchData = ({ pageNumber, pageSize }: { pageNumber: number; pageSize: number }) => {
+    return new Promise<ReturnType<typeof database.getData>>(resolve => {
+      setTimeout(() => {
+        resolve(database.getData({ pageNumber, pageSize }))
+      }, 1000)
+    })
+  }
+  // 删除数据
+  const deleteById = (id: number) => {
+    return new Promise<null>(resolve => {
+      setTimeout(() => {
+        database.deleteById(id)
+        resolve(null)
+      }, 1000)
+    })
+  }
+
+  return { fetchData, deleteById }
+}
+```
+#### 功能测试
+```typescript
+import { act, renderHook } from 'react-hooks-testing-library'
+import useLoadMoreList from '../src/index'
+
+const config = { dataKey: 'data', idKey: 'id', pageSize: 10 }
+
+const config = { dataKey: 'data', idKey: 'id', pageSize: 10 }
+
+describe('use pagination', () => {
+  it('case：hook 的数据获取，fetch data ', async () => {
+    const model = createModel()
+    const { result, waitForNextUpdate } = renderHook(() =>
+      // tslint:disable-next-line: react-hooks-nesting
+      useLoadMoreList(model.fetchData, config) // 
+    )
+    // 等待 rerender
+    await waitForNextUpdate()
+    // 判断数据是否符合预期
+    expect(result.current.loading).toEqual(false)
+    expect(result.current.total).toEqual(85)
+    expect(result.current.data).not.toBeUndefined()
+    expect(result.current.data).toHaveLength(10)
+  })
+
+  it('case：hook 获取下一页，fetch next page', async () => {
+    const model = createModel()
+    const { result, waitForNextUpdate } = renderHook(() =>
+      // tslint:disable-next-line: react-hooks-nesting
+      useLoadMoreList(model.fetchData, config)
+    )
+    // 防止前一个没有update
+    setTimeout(async () => {
+      act(() => {
+        result.current.getNextPage()
+      })
+
+      await waitForNextUpdate()
+      expect(result.current.data).toHaveLength(20)
+    }, 2000)
+  })
+
+  it('case：hook 删除某项，delete one data', async () => {
+    const model = createModel()
+    const { result, waitForNextUpdate } = renderHook(() =>
+      // tslint:disable-next-line: react-hooks-nesting
+      useLoadMoreList(model.fetchData, config)
+    )
+
+    await waitForNextUpdate()
+    await model.deleteById(1)
+    act(() => {
+      result.current.deleteDataById(1)
+    })
+    expect(result.current.data).toHaveLength(9)
+  })
+})
+
+```
+
+## 示例
+
+在线demo：[https://fulldo.github.io/pages/use-load-more-list/](https://fulldo.github.io/pages/use-load-more-list/)
+
+## 总结
+
+至此，我们完成了这个无限加载更多数据的 hook 的实现，这里再总结下。
+
+我们对项目分称了两层：
+- 数据层，专注数据操作
+- 逻辑层，专注逻辑实现
+
+对于数据层，我们基于 Flux 数据流维护数据
+- state，数据源
+- action，通知 reducer 更改数据的动作
+- reducer，最终变更数据的函数
+  
+对于逻辑层，我们做了这些工作：
+- 初始化状态
+- 定义数据操作，
+  - 封装基础获取数据函数
+  - 获取下页数据
+  - 删除数据
+  - 重置数据
+- 数据返回
+
+逻辑层核心点是获取数据函数的封装，然后还有对删除数据和获取下页数据的处理，删除处理是比较复杂的一点。
+
+上面代码仓库：[https://github.com/fulldo/use-load-more-list](https://github.com/fulldo/use-load-more-list)
+npm 主页：[https://www.npmjs.com/package/use-load-more-list](https://www.npmjs.com/package/use-load-more-list)
+
+感觉大家阅读，也欢迎大家使用 useLoadMoreList ！
