@@ -714,6 +714,12 @@ describe('use pagination', () => {
 
 在线`demo`：[https://fulldo.github.io/pages/use-load-more-list/](https://fulldo.github.io/pages/use-load-more-list/)
 
+也可手机扫码体验：
+
+<img src="https://fulldo.github.io/pages/use-load-more-list/images/code.png" width="150" />
+
+示例图片：
+
 <img src="https://fulldo.github.io/pages/use-load-more-list/images/demo.gif" width="360" />
 
 ## 总结
