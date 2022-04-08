@@ -10,7 +10,7 @@
 
 我这里将该 `hook` 命名为 `useLoadMoreList`，以下讲解这个 `hook` 的实现过程。
 
-本地完整代码可在 [这里](https://github.com/fulldo/use-load-more-list) 查看。
+本文完整代码可在 [这里](https://github.com/fulldo/use-load-more-list) 查看。
 
 ## API 定义
 
