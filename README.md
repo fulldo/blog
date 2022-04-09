@@ -20,11 +20,12 @@
 
 ### [React18 Automatic Batching 的一个问题](https://github.com/fulldo/blog/tree/main/articles/React18%20Automatic%20Batching%20%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98)
 
+### [React18 总结梳理](https://github.com/fulldo/blog/tree/main/articles/ReactV18%20%E6%80%BB%E7%BB%93%E6%A2%B3%E7%90%86)
+
 ### [为什么 React Scheduler 使用 MessageChannel（总结）](https://github.com/fulldo/blog/tree/main/articles/%E4%B8%BA%E4%BB%80%E4%B9%88%20React%20Scheduler%20%E4%BD%BF%E7%94%A8%20MessageChannel%EF%BC%88%E6%80%BB%E7%BB%93%EF%BC%89)
 
 ### [React Fiber 的一篇文章梳理](https://github.com/fulldo/blog/tree/main/articles/React%20Fiber%E6%96%87%E7%AB%A0%E6%A2%B3%E7%90%86)
 
-### [ReactV18 总结梳理](https://github.com/fulldo/blog/tree/main/articles/ReactV18%20%E6%80%BB%E7%BB%93%E6%A2%B3%E7%90%86)
 
 ## 视频直播与直播间 webview 滚动优化
 
