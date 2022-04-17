@@ -42,5 +42,7 @@
 
 ### [基于 webpack 的 PC 端和 mobile 端开发以及生产环境的搭建](https://github.com/fulldo/blog/tree/main/articles/%E5%9F%BA%E4%BA%8E%20webpack%20%E7%9A%84%20PC%20%E7%AB%AF%E5%92%8C%20mobile%20%E7%AB%AF%E5%BC%80%E5%8F%91%E4%BB%A5%E5%8F%8A%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA)
 
+### [[翻译]ImmutableJS Records的简介以及用例](https://github.com/fulldo/blog/tree/main/articles/%5B%E7%BF%BB%E8%AF%91%5DImmutableJS%20Records%E7%9A%84%E7%AE%80%E4%BB%8B%E4%BB%A5%E5%8F%8A%E7%94%A8%E4%BE%8B)
+
 ### [Promise/A+的实现思维导图](https://github.com/fulldo/blog/blob/main/articles/PromiseA%2B的实现思维导图/readme.md)
 
