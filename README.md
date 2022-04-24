@@ -40,6 +40,8 @@
 
 ## 其他
 
+### [记录一个关于 Chrome 浏览器渲染阻塞的问题](https://github.com/fulldo/blog/tree/main/articles/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%20Chrome%20%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E9%98%BB%E5%A1%9E%E7%9A%84%E9%97%AE%E9%A2%98)
+
 ### [基于 webpack 的 PC 端和 mobile 端开发以及生产环境的搭建](https://github.com/fulldo/blog/tree/main/articles/%E5%9F%BA%E4%BA%8E%20webpack%20%E7%9A%84%20PC%20%E7%AB%AF%E5%92%8C%20mobile%20%E7%AB%AF%E5%BC%80%E5%8F%91%E4%BB%A5%E5%8F%8A%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA)
 
 ### [[翻译]ImmutableJS Records的简介以及用例](https://github.com/fulldo/blog/tree/main/articles/%5B%E7%BF%BB%E8%AF%91%5DImmutableJS%20Records%E7%9A%84%E7%AE%80%E4%BB%8B%E4%BB%A5%E5%8F%8A%E7%94%A8%E4%BE%8B)
