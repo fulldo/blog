@@ -134,7 +134,7 @@ Post in 2022-04-24.
 
 经过一番折腾，没有找到问题原因，朋友们要是有兴趣，可以到它 [change list](https://chromium.googlesource.com/chromium/src/+log/96.0.4664.50..97.0.4692.71) 里面找找，看看有没有相关的变更描述，变更太多了，我还没找到。
 
-朋友们也可以换着浏览器自己试一下：[https://fulldo.github.io/render](https://fulldo.github.io/pages/render)
+朋友们也可以换着浏览器自己试一下：[https://fulldo.github.io/pages/render](https://fulldo.github.io/pages/render)
 
 或者下载不同的 `Chromium` 浏览器测试：
 - [Chromium 96](https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Mac/920553/)
