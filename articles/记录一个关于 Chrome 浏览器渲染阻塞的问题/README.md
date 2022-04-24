@@ -1,5 +1,7 @@
 # 记录一个关于 Chrome 浏览器渲染阻塞的问题
 
+Post in 2022-04-24.
+
 ## 问题
 有下面一段 `html` 代码，在浏览器中打开，它是怎么样的呈现结果呢？
 
@@ -52,7 +54,7 @@
 ## 渲染原理
 要了解它如果运行，首先我们需要先了解浏览器的渲染过程，借用一张很经典的图：
 
-<img src="./imgs/render-simple.jpg" width="500" />
+<img src="./imgs/render-simple.jpg" width="800" />
 
 简略版渲染机制一般分为以下几个步骤：
 
@@ -70,7 +72,7 @@
 
 上面的代码有 `JavaScript` 脚本执行的过程，这个过程上面的图没有很有的体现出来，我们换一张图看：
 
-<img src="./imgs/render.jpg" width="500" />
+<img src="./imgs/render.jpg" width="800" />
 
 [来源](https://hondrytravis.com/docs/performance/browser_rendering_process/)
 
