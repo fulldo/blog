@@ -64,7 +64,7 @@ fetch(location.href).then(() => {
 ```js
 fetch(location.href).then(() => {
   ReactDOM.flushSync(() => setCount1((c) => c + 1));
-  ReactDOM.flushSync(setCount2((c) => c + 1));
+  ReactDOM.flushSync(() => setCount2((c) => c + 1));
 });
 ```
 
